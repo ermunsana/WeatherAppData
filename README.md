@@ -1,2 +1,2 @@
 # WeatherAppData
-Weather App Data
+Weather App that gets city's temperature 
