@@ -29,14 +29,6 @@ def get_weather(city):
 
 
 get_weather(city)
-
-# Select
-#for row in cur.execute("SELECT * FROM weather"):
-#    print(row)
-
-cur.execute('SELECT city, temperature FROM weather WHERE city="london"')
-cur.fetchall()
-
 con.close()
 
 
