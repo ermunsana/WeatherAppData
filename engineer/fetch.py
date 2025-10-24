@@ -15,7 +15,6 @@ def get_weather(city):
         data = response.json()
         return {
             "city": data["location"]["name"],
-            "timestamp": data["location"]["localtime"],
             "temp_c": data["current"]["temp_c"],
             "air_quality": data["current"]['air_quality']['us-epa-index']
         }
