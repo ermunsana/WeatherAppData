@@ -1,6 +1,7 @@
-import requests
-import os
-from dotenv import load_dotenv
-import sqlite3
-import pandas as pd
+requests
+os
+dotenv 
+load_dotenv
+sqlite3
+pandas
 
