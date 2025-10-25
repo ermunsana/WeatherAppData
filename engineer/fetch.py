@@ -25,7 +25,7 @@ def get_weather(city):
 
 
 
-def fetch_all_cities():
+def get_cities():
     records = []
     for city in cities:
         record = get_weather(city)

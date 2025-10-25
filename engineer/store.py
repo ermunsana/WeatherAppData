@@ -8,7 +8,7 @@ from clean import clean_weather_data
 db = "../db/weather_data.db"
 os.makedirs(os.path.dirname(db), exist_ok=True) 
 
-def init_db():
+def start_db():
     conn = sqlite3.connect(db)
     cur = conn.cursor()
     cur.execute("""
@@ -34,7 +34,7 @@ def insert_data(df):
     conn.close()
 
 if __name__ == "__main__":
-    init_db()
+    start_db()
     raw_data = fetch_all_cities()
     df = clean_weather_data(raw_data)
     insert_data(df)
