@@ -1,7 +1,7 @@
 import sqlite3
 import os
 import pandas as pd
-from fetch import fetch_all_cities
+from fetch import get_cities
 from clean import clean_weather_data
 
 
@@ -30,12 +30,12 @@ def insert_data(df):
     df = df[["city", "temp_c", "aqi"]]
 
     # Append data safely
-    df.to_sql("weather_data", conn, if_exists="replace", index=False)
+    df.to_sql("weather_data", conn, if_exists="append", index=False)
     conn.close()
 
 if __name__ == "__main__":
     start_db()
-    raw_data = fetch_all_cities()
+    raw_data = get_cities()
     df = clean_weather_data(raw_data)
     insert_data(df)
 
