@@ -1,15 +1,22 @@
+import schedule
+import time
+from datetime import datetime
 from extract import get_cities
 from transform import transform
 from load import start_db, load_data
 
 def etl():
-    start_db()
+    try:
+        start_db()
+        raw_data = get_cities()
+        df = transform(raw_data)
+        load_data(df)
+        print(f"[{datetime.now()}] Done")
+    except Exception as e:
+        print(f"[{datetime.now()}] Failed: {e}")
 
-    raw_data = get_cities()
-    df = transform(raw_data)
+schedule.every().day.at("06:00").do(etl)
 
-    load_data(df)
-    print("Done")
-
-if __name__ == "__main__":
-    etl()
+while True:
+    schedule.run_pending()
+    time.sleep(60) 
