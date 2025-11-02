@@ -32,12 +32,6 @@ def load_data(df):
 
     df = df[["city", "temp_c", "aqi"]]
 
-    df.to_sql("weather_data", conn, if_exists="replace", index=False)
+    df.to_sql("weather_data", conn, if_exists="append", index=False)
     conn.close()
-
-if __name__ == "__main__":
-    start_db()
-    raw_data = get_cities()
-    df = transform(raw_data)
-    load_data(df)
 

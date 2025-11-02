@@ -1,5 +1,3 @@
-import schedule
-import time
 from datetime import datetime
 from extract import get_cities
 from transform import transform
@@ -15,8 +13,4 @@ def etl():
     except Exception as e:
         print(f"[{datetime.now()}] Failed: {e}")
 
-schedule.every().day.at("06:00").do(etl)
-
-while True:
-    schedule.run_pending()
-    time.sleep(60) 
+etl()

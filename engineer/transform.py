@@ -36,7 +36,7 @@ df = transform(raw_data)
 
 
 save_json = df.to_dict(orient="records")
-timestamp = datetime.now().strftime("%Y%m%d")
+timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 file_path = f"data/clean/clean_data_{timestamp}.json"
 
 
