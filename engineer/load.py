@@ -5,8 +5,11 @@ from extract import get_cities
 from transform import transform
 
 
-db = "../db/weather_database.db"
-os.makedirs(os.path.dirname(db), exist_ok=True) 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+db_dir = os.path.join(BASE_DIR, "..", "db")
+os.makedirs(db_dir, exist_ok=True)
+
+db = os.path.join(db_dir, "weather_database.db")
 
 def start_db():
     conn = sqlite3.connect(db)

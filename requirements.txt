@@ -1,8 +1,0 @@
-requests
-os
-dotenv 
-load_dotenv
-sqlite3
-pandas
-matplotlib
-numpy 

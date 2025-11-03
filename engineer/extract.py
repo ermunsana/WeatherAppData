@@ -51,8 +51,13 @@ def get_cities():
     return results
 
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+data_dir = os.path.join(BASE_DIR, "data", "raw")
+os.makedirs(data_dir, exist_ok=True)  
+
 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-file_path = f"data/raw/raw_data_{timestamp}.json"
+file_path = os.path.join(data_dir, f"raw_data_{timestamp}.json")
 
 with open(file_path, "w", encoding="utf-8") as f:
     json.dump(get_cities(), f, indent=2)
