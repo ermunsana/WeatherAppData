@@ -3,7 +3,7 @@ import os
 import pandas as pd
 from extract import get_cities
 from transform import transform
-
+from load import start_db, load_data
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 db_dir = os.path.join(BASE_DIR, "..", "db")
@@ -38,3 +38,8 @@ def load_data(df):
     df.to_sql("weather_data", conn, if_exists="append", index=False)
     conn.close()
 
+
+start_db()
+raw_data = get_cities()
+df = transform(raw_data)
+load_data(df)
